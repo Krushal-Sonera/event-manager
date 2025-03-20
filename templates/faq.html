@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}FAQ & Help{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Frequently Asked Questions</h1>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    How do I register for an event?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    You can register by clicking on the "Add to Calendar" button on the event page or by contacting our support team.
+                </div>
+            </div>
+        </div>
+        <!-- Additional FAQ items can be added here -->
+    </div>
+</div>
+{% endblock %}

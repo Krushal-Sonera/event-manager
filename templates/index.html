@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}Upcoming Events{% endblock %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+        <h1 class="display-5 fw-bold">Welcome to Event Manager</h1>
+        <p class="col-md-8 fs-4">Discover upcoming events and create your own!</p>
+        <a href="{{ url_for('add_event') }}" class="btn btn-primary btn-lg">Create an Event</a>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Upcoming Events</h1>
+    {% if events %}
+    <div class="row">
+        {% for event in events %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/event_placeholder.jpg') }}" class="card-img-top" alt="{{ event.title }}">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-calendar-event me-2"></i>{{ event.title }}</h5>
+                    <p class="card-text">{{ event.description[:100] ~ '...' }}</p>
+                    <a href="{{ url_for('event_detail', event_id=event.id) }}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No events found. <a href="{{ url_for('add_event') }}">Add an event</a>.</p>
+    {% endif %}
+</div>
+{% else %}
+<div class="container mt-5">
+    <h2>Please <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('signup') }}">sign up</a> to view events.</h2>
+</div>
+{% endif %}
+{% endblock %}

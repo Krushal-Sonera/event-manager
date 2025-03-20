@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1><i class="bi bi-speedometer2 me-2"></i>Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-calendar-event me-2"></i>Your Events</h5>
+                    <p class="card-text">You have {{ user_events|length }} events.</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-primary">View Events</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-plus-circle me-2"></i>Create New Event</h5>
+                    <p class="card-text">Add a new event to your list.</p>
+                    <a href="{{ url_for('add_event') }}" class="btn btn-primary">Add Event</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

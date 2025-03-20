@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}{{ event.title }} Details{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title"><i class="bi bi-calendar-event me-2"></i>{{ event.title }}</h1>
+            <p class="card-text">{{ event.description }}</p>
+            <p><i class="bi bi-calendar me-2"></i><strong>Date:</strong> {{ event.event_date.strftime('%Y-%m-%d') }}</p>
+            <p><i class="bi bi-clock me-2"></i><strong>Time:</strong> {{ event.event_time.strftime('%H:%M') }}</p>
+            <p><i class="bi bi-geo-alt me-2"></i><strong>Location:</strong> {{ event.location }}</p>
+            <a class="btn btn-info" href="https://www.google.com/maps/search/{{ event.location | urlencode }}" target="_blank">
+                <i class="bi bi-map me-2"></i>View Map
+            </a>
+            <a class="btn btn-secondary" href="{{ url_for('download_ics', event_id=event.id) }}">
+                <i class="bi bi-calendar-plus me-2"></i>Add to Calendar
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

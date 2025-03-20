@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Contact Us</h2>
+                    <form action="{{ url_for('contact') }}" method="post">
+                        <div class="mb-3">
+                            <label for="name" class="form-label"><i class="bi bi-person me-2"></i>Name:</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label"><i class="bi bi-envelope me-2"></i>Email:</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label"><i class="bi bi-chat-dots me-2"></i>Message:</label>
+                            <textarea class="form-control" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
